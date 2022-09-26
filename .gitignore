@@ -1,0 +1,6 @@
+nvoidwm
+config.h 
+*.o
+*.orig
+*.rej
+.ccls-cache/
