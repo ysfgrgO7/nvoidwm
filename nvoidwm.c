@@ -94,12 +94,8 @@ enum {
 enum {
   SchemeNorm,
   SchemeSel,
-  SchemeTag,
-  SchemeTag1,
-  SchemeTag2,
-  SchemeTag3,
-  SchemeTag4,
-  SchemeTag5,
+  SchemeTagsSel,
+  SchemeTagsNorm,
   SchemeLayout,
   TabSel,
   TabNorm,
@@ -415,7 +411,6 @@ struct Monitor {
   unsigned int seltags;
   unsigned int sellt;
   unsigned int tagset[2];
-  unsigned int colorfultag;
   int showbar, showtab;
   int topbar, toptab;
   Client *clients;
@@ -970,7 +965,6 @@ Monitor *createmon(void) {
   m->topbar = topbar;
   m->toptab = toptab;
   m->ntabs = 0;
-  m->colorfultag = colorfultag ? colorfultag : 0;
   m->gappih = gappih;
   m->gappiv = gappiv;
   m->gappoh = gappoh;
@@ -1214,7 +1208,7 @@ void drawbar(Monitor *m) {
 	if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
 		continue;
     w = TEXTW(tags[i]);
-    drw_setscheme(drw, scheme[occ & 1 << i ? (m->colorfultag ? tagschemes[i] : SchemeSel) : SchemeTag]);
+	drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : SchemeTagsNorm]);
     drw_text(drw, x, y, w, bh_n, lrpad / 2, tags[i], urg & 1 << i);
     if (ulineall ||
         m->tagset[m->seltags] &
