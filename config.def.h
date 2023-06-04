@@ -52,8 +52,9 @@ static const char *const autostart[] = {
 	"volumeicon", NULL,
 	"picom", NULL,
 	"lxsession", NULL,
-    "slstatus", NULL,
-    "nitrogen", "--restore" , NULL,
+  "bar", NULL,
+  "dunst", NULL,
+  "nitrogen", "--restore" , NULL,
 	"picom", "-b", "--experimental-backends", NULL,
 	NULL
 };
@@ -171,8 +172,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,                 XK_i,       incnmaster,     {.i = +1 } },
     { MODKEY|ShiftMask,                 XK_d,       incnmaster,     {.i = -1 } },
     { MODKEY|ShiftMask,                 XK_c,       killclient,     {0} },
-	{ MODKEY|ShiftMask,                 XK_q,       quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask,     XK_q,       quit,           {1} }, 
+    { MODKEY|ShiftMask,                 XK_q,       quit,           {0} },
+    { MODKEY|ControlMask|ShiftMask,     XK_q,       quit,           {1} }, 
    // Monitors
     { MODKEY,                           XK_o,       focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,                 XK_o,       tagmon,         {.i = +1 } },
